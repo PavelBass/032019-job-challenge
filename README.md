@@ -45,3 +45,68 @@
 Можно пользоваться любыми библиотеками общего назначения, библиотека реализующей цепочки Маркова из коробки пользоваться нельзя, но если вы ее найдете, то можете дополнительно указать.
 
 [Цепочки маркова](http://rain.ifmo.ru/cat/view.php/theory/processes-automata/markov-2008)
+
+## Реализация
+
+Сервис реализован на Python 3.7.2 без сторонних библиотек для расчетов.
+
+requirements: click==7.0
+
+### Установка
+
+Рекомендуется использовать виртуальное окружение с Python 3.7.2 и выше. Для установки:
+```pip install git+https://github.com/PavelBass/sibur-job-challenge.git```
+
+### Запуск
+
+#### test_generation
+Команда `test_generation` позволяет сгенерировать последовательность на тестовом примере, с подробными логами работы.
+
+```
+Usage: sibur_markov test_generation [OPTIONS] [LINE_LENGTH]
+
+Options:
+  --help  Show this message and exit.
+```
+
+В качестве необязательного аргумента принимется число от 1 до 3, которое отвечает за величину n-грамма.
+
+Пример:
+```
+sibur_markov test_generation 2
+```
+```
+sibur_markov test_generation 1
+```
+
+#### generation
+
+```
+Usage: sibur_markov generate [OPTIONS] SOURCE RESULT LINE_LENGTH RESULT_LENGTH
+
+Options:
+  -v, --verbose
+  --help         Show this message and exit.
+```
+
+Пример: 
+```
+sibur_markov generate test_source.txt result.txt 2 20
+```
+
+### Запуск тестов и линтера
+
+Склонируйте проект:
+```git clone https://github.com/PavelBass/sibur-job-challenge```
+
+Перейдите в папку с проектом:
+```cd sibur-job-challenge```
+
+Установите необходимые для тестирования библиотеки (лучше использовать виртуальное окружение):
+```pip install git+https://github.com/PavelBass/sibur-job-challenge[test]```
+
+Запустите тесты:
+```pytest```
+
+Запустите линтер:
+```pylint```
