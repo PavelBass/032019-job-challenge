@@ -20,7 +20,7 @@ def cli() -> None:
 @click.option('-v', '--verbose', is_flag=True, default=False)
 @click.argument('source', type=click.File('r'))
 @click.argument('result', type=click.File('w'))
-@click.argument('line_length', type=click.IntRange(0, 20))
+@click.argument('line_length', type=click.IntRange(1, 20))
 @click.argument('result_length', type=int)
 def main(verbose: bool, source: click.File, result: click.File, line_length: int, result_length: int) -> None:
     setup_logging(logging.DEBUG if verbose else logging.INFO)
@@ -38,7 +38,7 @@ def main(verbose: bool, source: click.File, result: click.File, line_length: int
 
 
 @cli.command('test_generation')
-@click.argument('line_length', type=click.IntRange(0, 3), default=2)
+@click.argument('line_length', type=click.IntRange(1, 3), default=2)
 def test(line_length):
     setup_logging(logging.DEBUG)
     logger.info('=== START TEST GENERATION ===')
