@@ -12,7 +12,7 @@ class TextParser:
         self._punctuation_words = set(constants.PUNCTUATION_WORDS)
         self._parsed = []
 
-    def _set_defaults(self):
+    def _set_defaults(self) -> None:
         self._text = ''
         self._position = 0
         self._last_word = ''

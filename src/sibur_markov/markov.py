@@ -5,6 +5,9 @@ from typing import (
     List,
     Tuple,
     Optional,
+    Dict,
+    Any,
+    Union,
 )
 
 from logging import getLogger
@@ -30,13 +33,13 @@ class TextMarkovChain:
             self._ngramms_vocabulary[tuple(self.__last_ngramm)] += word
             self.__last_ngramm.append(word)
 
-    def get_ngrams(self):
+    def get_ngrams(self) -> List[Tuple[str]]:
         return self._ngramms_vocabulary.ngrams
 
     def get_ngrams_statistic(self):
         return self._ngramms_vocabulary.get_ngrams_statistic()
 
-    def generate(self, length):
+    def generate(self, length) -> str:
         logger.debug('=== GENERATION === ')
         result = self._generate_words(self.__length if self.__length < length else length)
         logger.debug('First words: %s', result)
@@ -50,7 +53,7 @@ class TextMarkovChain:
         logger.debug('=== GENERATION FINISHED === ')
         return ' '.join(normalize_result(result))
 
-    def _generate_words(self, length):
+    def _generate_words(self, length) -> List[str]:
         return [self._words_dictogram.random_word() for _ in range(length)]
 
 
@@ -58,17 +61,17 @@ class Dictogram:
     def __init__(self):
         self.__data = dict()
 
-    def __iadd__(self, other) -> None:
+    def __iadd__(self, other: str) -> None:
         if not isinstance(other, str):
             raise ValueError('Can only add words (strings)')
         self.add(other)
 
-    def add(self, item):
+    def add(self, item) -> None:
         if item not in self.__data:
             self.__data[item] = 0
         self.__data[item] += 1
 
-    def get_weighted_words(self):
+    def get_weighted_words(self) -> List[Tuple[Union[str, Tuple[str]], int]]:
         return sorted(self.__data.items(), key=lambda x: x[1])
 
     def random_word(self) -> Optional[str]:  # pylint: disable=inconsistent-return-statements
@@ -99,7 +102,7 @@ class Vocabulary:
     def ngrams(self) -> List[Tuple[str]]:
         return list(self.__data.keys())
 
-    def get_ngrams_statistic(self):
+    def get_ngrams_statistic(self) -> Dict[str, Any]:
         return {
             ' '.join(key): value.get_weighted_words() for key, value in self.__data.items()
         }
