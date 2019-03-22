@@ -7,7 +7,7 @@ from setuptools import (
 
 setup(
     name='sibur_markov',
-    version='0.0.1',
+    version='1.0.0',
     author='Pavel Bass',
     author_email='statgg@gmail.com',
     description='Sibur job challenge',
