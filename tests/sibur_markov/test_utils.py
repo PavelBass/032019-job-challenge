@@ -5,11 +5,11 @@ from sibur_markov.utils import normalize_result
 
 @pytest.mark.parametrize('result,expected', [
     # simple
-    (['ааа', 'bbb'], ['ааа', 'bbb']),
+    (['aaa', 'bbb'], ['Aaa', 'bbb.']),
     # punctuations added to words
-    (['ааа', ',', 'bbb', '.'], ['ааа,', 'bbb.']),
+    (['aaa', ',', 'bbb', '.'], ['Aaa,', 'bbb.']),
     # words capitalization
-    (['ааа', '.', 'bbb'], ['ааа.', 'Bbb']),
+    (['aaa', '.', 'bbb'], ['Aaa.', 'Bbb.']),
 
 ])
 def test_parser__parse_returns_expected(result, expected):
