@@ -6,7 +6,7 @@ from setuptools import (
 )
 
 setup(
-    name='sibur_job_challenge',
+    name='sibur_markov',
     version='0.0.1',
     author='Pavel Bass',
     author_email='statgg@gmail.com',
