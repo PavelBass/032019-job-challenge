@@ -109,4 +109,4 @@ sibur_markov generate test_source.txt result.txt 2 20
 ```pytest```
 
 Запустите линтер:
-```pylint```
+```pylint sibur_markov```
