@@ -24,13 +24,8 @@ setup(
     ],
     extras_require={
         'test': [
-            'pycodestyle',
             'pylint',
-            'pylint-quotes',
             'pytest',
-            'pytest-cov',
-            'pytest-mock',
-            'diff-cover',
         ],
     },
 )
