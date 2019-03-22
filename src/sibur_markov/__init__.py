@@ -21,7 +21,3 @@ def setup_logging(level: str = logging.DEBUG) -> None:
         format='%(asctime)s %(name)-24s %(levelname)s %(message)s',
         datefmt='%d.%m.%Y[%H:%M:%S]',
     )
-
-
-def setup():
-    setup_logging(level=logging.INFO)
