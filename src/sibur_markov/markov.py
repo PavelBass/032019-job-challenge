@@ -17,13 +17,13 @@ logger = getLogger('MarkovChain')
 class TextMarkovChain:
     def __init__(self, length=1):
         self.__length = length
-        self._words_vocabulary = Dictogram()
+        self._words_dictogram = Dictogram()
         self._ngramms_vocabulary = Vocabulary()
         self.__last_ngramm = deque(maxlen=length)
 
     def update(self, iterable: Iterable[str]) -> None:
         for word in iterable:
-            self._words_vocabulary.add(word)
+            self._words_dictogram.add(word)
             if len(self.__last_ngramm) < self.__length:
                 self.__last_ngramm.append(word)
                 continue
@@ -51,7 +51,7 @@ class TextMarkovChain:
         return ' '.join(normalize_result(result))
 
     def _generate_words(self, length):
-        return [self._words_vocabulary.random_word() for _ in range(length)]
+        return [self._words_dictogram.random_word() for _ in range(length)]
 
 
 class Dictogram:
@@ -71,7 +71,7 @@ class Dictogram:
     def get_weighted_words(self):
         return sorted(self.__data.items(), key=lambda x: x[1])
 
-    def random_word(self) -> Optional[str]:
+    def random_word(self) -> Optional[str]:  # pylint: disable=inconsistent-return-statements
         values_sum = sum(self.__data.values())
         if not values_sum:
             return

@@ -9,7 +9,7 @@ class TextParser:
         self._position = 0
         self._last_word = ''
         self._letters = set(constants.LOWER_LETTERS)
-        self.punctuation_words = set(constants.PUNCTUATION_WORDS)
+        self._punctuation_words = set(constants.PUNCTUATION_WORDS)
         self._parsed = []
 
     def _set_defaults(self):
