@@ -24,14 +24,17 @@ def cli() -> None:
 @click.argument('result_length', type=int)
 def main(verbose: bool, source: click.File, result: click.File, line_length: int, result_length: int) -> None:
     setup_logging(logging.DEBUG if verbose else logging.INFO)
-    logger.info('=== START ===')
+    logger.info('== Start ==')
     parser = TextParser()
     parser.parse(source.read())
+    logger.info('Parsed text from %s', source.name)
 
     markov_chain = TextMarkovChain(line_length)
     markov_chain.update(parser.parsed)
 
     result.write(markov_chain.generate(result_length))
+    logger.info('Generation result written to %s', result.name)
+    logger.info('== Finish ==')
 
 
 @cli.command('test_generation')
