@@ -1,25 +1,23 @@
 from typing import Iterable
 
+from sibur_markov import constants
+
 
 class TextParser:
-
-    LOWER_LETTERS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
-    PUNCTUATION_WORDS = '.,'
-
     def __init__(self):
         self._text = ''
         self._position = 0
         self._last_word = ''
-        self._letters = set(self.LOWER_LETTERS)
-        self.punctuation_words = set(self.PUNCTUATION_WORDS)
+        self._letters = set(constants.LOWER_LETTERS)
+        self.punctuation_words = set(constants.PUNCTUATION_WORDS)
         self._parsed = []
 
     def _set_defaults(self):
         self._text = ''
         self._position = 0
         self._last_word = ''
-        self._letters = set(self.LOWER_LETTERS)
-        self._punctuation_words = set(self.PUNCTUATION_WORDS)
+        self._letters = set(constants.LOWER_LETTERS)
+        self._punctuation_words = set(constants.PUNCTUATION_WORDS)
         self._parsed = []
 
     @property

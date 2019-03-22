@@ -8,6 +8,9 @@ from typing import (
 )
 
 from logging import getLogger
+
+from sibur_markov.utils import normalize_result
+
 logger = getLogger('MarkovChain')
 
 
@@ -44,7 +47,8 @@ class TextMarkovChain:
                 word = self._generate_words(1)[0]
                 logger.debug('Random word: %s', word)
             result.append(word)
-        return ' '.join(result)
+        logger.debug('=== GENERATION FINISHED === ')
+        return ' '.join(normalize_result(result))
 
     def _generate_words(self, length):
         return [self._words_vocabulary.random_word() for _ in range(length)]
