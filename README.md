@@ -1,4 +1,4 @@
-# Sibur Job Challenge
+# Job Challenge
 
 ## Задание
 
@@ -55,7 +55,7 @@ requirements: click==7.0
 ### Установка
 
 Рекомендуется использовать виртуальное окружение с Python 3.7.2 и выше. Для установки:
-```pip install git+https://github.com/PavelBass/sibur-job-challenge.git```
+```pip install git+https://github.com/PavelBass/032019-job-challenge.git```
 
 ### Запуск
 
@@ -97,13 +97,13 @@ sibur_markov generate test_source.txt result.txt 2 20
 ### Запуск тестов и линтера
 
 Склонируйте проект:
-```git clone https://github.com/PavelBass/sibur-job-challenge```
+```git clone https://github.com/PavelBass/032019-job-challenge```
 
 Перейдите в папку с проектом:
-```cd sibur-job-challenge```
+```cd 032019-job-challenge```
 
 Установите необходимые для тестирования библиотеки (лучше использовать виртуальное окружение):
-```pip install git+https://github.com/PavelBass/sibur-job-challenge[test]```
+```pip install git+https://github.com/PavelBass/032019-job-challenge[test]```
 
 Запустите тесты:
 ```pytest```
